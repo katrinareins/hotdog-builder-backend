@@ -1,0 +1,764 @@
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateHotdogs (20191228203639)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "hotdogs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "condiment" varchar, "user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191228203639"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20191228203652)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191228203652"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-12-28 20:37:11.080115"], ["updated_at", "2019-12-28 20:37:11.080115"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2019-12-28 12:37:26 -0800
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/olikat/.rvm/gems/ruby-2.6.1/gems/railties-6.0.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/olikat/.rvm/gems/ruby-2.6.1/gems/railties-6.0.2.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.7ms | Allocations: 481)
+Completed 200 OK in 19ms (Views: 13.8ms | ActiveRecord: 0.0ms | Allocations: 2641)
+
+
+Started GET "/users" for ::1 at 2019-12-28 12:37:32 -0800
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for UsersController):
+  
+actionpack (6.0.2.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.2.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.2.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.0.8) lib/rack/etag.rb:25:in `call'
+rack (2.0.8) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.8) lib/rack/head.rb:12:in `call'
+activerecord (6.0.2.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.8) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.0) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "/hotdogs" for ::1 at 2019-12-28 12:37:44 -0800
+  
+AbstractController::ActionNotFound (The action 'create' could not be found for HotdogsController):
+  
+actionpack (6.0.2.1) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.2.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.2.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.2.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.2.1) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.0.8) lib/rack/etag.rb:25:in `call'
+rack (2.0.8) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.8) lib/rack/head.rb:12:in `call'
+activerecord (6.0.2.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.8) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.8) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.0) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Alisa"], ["created_at", "2019-12-28 21:13:53.422274"], ["updated_at", "2019-12-28 21:13:53.422274"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Emily"], ["created_at", "2019-12-28 21:13:53.429663"], ["updated_at", "2019-12-28 21:13:53.429663"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/users" for ::1 at 2019-12-28 13:14:03 -0800
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:9:in `index'
+Completed 200 OK in 9ms (Views: 5.7ms | ActiveRecord: 0.9ms | Allocations: 4994)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Alisa"], ["created_at", "2019-12-28 21:15:01.297515"], ["updated_at", "2019-12-28 21:15:01.297515"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Emily"], ["created_at", "2019-12-28 21:15:01.301231"], ["updated_at", "2019-12-28 21:15:01.301231"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mHotdog Create (0.5ms)[0m  [1m[32mINSERT INTO "hotdogs" ("condiment", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["condiment", "pickles tomato"], ["user_id", 1], ["created_at", "2019-12-28 21:15:01.327001"], ["updated_at", "2019-12-28 21:15:01.327001"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mHotdog Create (0.2ms)[0m  [1m[32mINSERT INTO "hotdogs" ("condiment", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["condiment", "relish mustard"], ["user_id", 2], ["created_at", "2019-12-28 21:15:01.331854"], ["updated_at", "2019-12-28 21:15:01.331854"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/hotdogs" for ::1 at 2019-12-28 13:15:08 -0800
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HotdogsController#index as HTML
+  [1m[36mHotdog Load (0.2ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 9ms (Views: 6.1ms | ActiveRecord: 0.8ms | Allocations: 5392)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 13:16:10 -0800
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"ketchup relish pickles", "user_id"=>1, "hotdog"=>{"condiment"=>"ketchup relish pickles", "user_id"=>1}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mHotdog Create (0.5ms)[0m  [1m[32mINSERT INTO "hotdogs" ("condiment", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["condiment", "ketchup relish pickles"], ["user_id", 1], ["created_at", "2019-12-28 21:16:10.683667"], ["updated_at", "2019-12-28 21:16:10.683667"]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+Completed 200 OK in 43ms (Views: 0.3ms | ActiveRecord: 2.0ms | Allocations: 10262)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 13:17:08 -0800
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"all-beef hot dog,tomato slices,relish,sauteed onions,hot sauce", "hotdog"=>{"condiment"=>"all-beef hot dog,tomato slices,relish,sauteed onions,hot sauce"}}
+Completed 200 OK in 18ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 3629)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 13:17:41 -0800
+Processing by HotdogsController#index as HTML
+  [1m[36mHotdog Load (0.1ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 1145)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 13:21:00 -0800
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"ketchup,mustard,pickled peppers,Beyond Sausage Chicago Dog", "hotdog"=>{"condiment"=>"ketchup,mustard,pickled peppers,Beyond Sausage Chicago Dog"}}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 639)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 13:24:23 -0800
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"cream cheese,hot sauce", "hotdog"=>{"condiment"=>"cream cheese,hot sauce"}}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 639)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 13:24:32 -0800
+Processing by HotdogsController#index as HTML
+  [1m[36mHotdog Load (0.1ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1128)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 13:26:23 -0800
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"ketchup relish pickles", "user_id"=>1, "hotdog"=>{"condiment"=>"ketchup relish pickles", "user_id"=>1}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mHotdog Create (0.5ms)[0m  [1m[32mINSERT INTO "hotdogs" ("condiment", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["condiment", "ketchup relish pickles"], ["user_id", 1], ["created_at", "2019-12-28 21:26:23.773888"], ["updated_at", "2019-12-28 21:26:23.773888"]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+Completed 200 OK in 11ms (Views: 0.3ms | ActiveRecord: 6.8ms | Allocations: 3332)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 13:26:36 -0800
+Processing by HotdogsController#index as HTML
+  [1m[36mHotdog Load (0.1ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1266)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 13:27:28 -0800
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"ketchup,mustard,onions,dill pickle spear,relish,tomato slices", "hotdog"=>{"condiment"=>"ketchup,mustard,onions,dill pickle spear,relish,tomato slices"}}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 640)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 13:27:51 -0800
+Processing by HotdogsController#index as HTML
+  [1m[36mHotdog Load (0.1ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1258)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 13:28:12 -0800
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"ketchup relish pickles", "hotdog"=>{"condiment"=>"ketchup relish pickles"}}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 637)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 13:28:36 -0800
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"ketchup relish pickles", "hotdog"=>{"condiment"=>"ketchup relish pickles"}}
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 4187)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 13:28:40 -0800
+Processing by HotdogsController#index as HTML
+  [1m[36mHotdog Load (0.2ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms | Allocations: 1310)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 13:29:07 -0800
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"ketchup relish pickles", "hotdog"=>{"condiment"=>"ketchup relish pickles"}}
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 6643)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 13:29:16 -0800
+Processing by HotdogsController#index as HTML
+  [1m[36mHotdog Load (0.2ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.2ms | Allocations: 1343)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 13:29:56 -0800
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"onion jalapenos", "user_id"=>2, "hotdog"=>{"condiment"=>"onion jalapenos", "user_id"=>2}}
+[31mUnpermitted parameter: :user_id[0m
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 680)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 13:30:17 -0800
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"onion jalapenos", "user_id"=>2, "hotdog"=>{"condiment"=>"onion jalapenos", "user_id"=>2}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mHotdog Create (0.5ms)[0m  [1m[32mINSERT INTO "hotdogs" ("condiment", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["condiment", "onion jalapenos"], ["user_id", 2], ["created_at", "2019-12-28 21:30:17.386634"], ["updated_at", "2019-12-28 21:30:17.386634"]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+Completed 200 OK in 21ms (Views: 0.5ms | ActiveRecord: 2.6ms | Allocations: 11783)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 13:30:58 -0800
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"poppy seed bun,tomato slices,pickled peppers", "user_id"=>1, "hotdog"=>{"condiment"=>"poppy seed bun,tomato slices,pickled peppers", "user_id"=>1}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mHotdog Create (0.3ms)[0m  [1m[32mINSERT INTO "hotdogs" ("condiment", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["condiment", "poppy seed bun,tomato slices,pickled peppers"], ["user_id", 1], ["created_at", "2019-12-28 21:30:58.969081"], ["updated_at", "2019-12-28 21:30:58.969081"]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+Completed 200 OK in 11ms (Views: 0.3ms | ActiveRecord: 6.5ms | Allocations: 3334)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 13:31:05 -0800
+Processing by HotdogsController#index as HTML
+  [1m[36mHotdog Load (0.2ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.2ms | Allocations: 1569)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 13:33:50 -0800
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"sauteed onions,tomato slices,pickled peppers,celery salt", "user_id"=>1, "hotdog"=>{"condiment"=>"sauteed onions,tomato slices,pickled peppers,celery salt", "user_id"=>1}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mHotdog Create (0.4ms)[0m  [1m[32mINSERT INTO "hotdogs" ("condiment", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["condiment", "sauteed onions,tomato slices,pickled peppers,celery salt"], ["user_id", 1], ["created_at", "2019-12-28 21:33:50.402247"], ["updated_at", "2019-12-28 21:33:50.402247"]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 6.7ms | Allocations: 3314)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 13:34:51 -0800
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"cream cheese", "user_id"=>1, "hotdog"=>{"condiment"=>"cream cheese", "user_id"=>1}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mHotdog Create (0.4ms)[0m  [1m[32mINSERT INTO "hotdogs" ("condiment", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["condiment", "cream cheese"], ["user_id", 1], ["created_at", "2019-12-28 21:34:51.939627"], ["updated_at", "2019-12-28 21:34:51.939627"]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 1.7ms | Allocations: 3332)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 13:36:34 -0800
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"mustard,onions", "user_id"=>1, "hotdog"=>{"condiment"=>"mustard,onions", "user_id"=>1}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mHotdog Create (0.3ms)[0m  [1m[32mINSERT INTO "hotdogs" ("condiment", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["condiment", "mustard,onions"], ["user_id", 1], ["created_at", "2019-12-28 21:36:34.147904"], ["updated_at", "2019-12-28 21:36:34.147904"]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+Completed 200 OK in 11ms (Views: 0.3ms | ActiveRecord: 6.7ms | Allocations: 3312)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 13:38:35 -0800
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"mustard,onions", "user_id"=>1, "hotdog"=>{"condiment"=>"mustard,onions", "user_id"=>1}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mHotdog Create (0.3ms)[0m  [1m[32mINSERT INTO "hotdogs" ("condiment", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["condiment", "mustard,onions"], ["user_id", 1], ["created_at", "2019-12-28 21:38:35.496421"], ["updated_at", "2019-12-28 21:38:35.496421"]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 7.1ms | Allocations: 3332)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 13:40:57 -0800
+Started GET "/hotdogs" for ::1 at 2019-12-28 13:40:57 -0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by HotdogsController#index as */*
+  [1m[36mHotdog Load (0.1ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"poppy seed bun", "user_id"=>1, "hotdog"=>{"condiment"=>"poppy seed bun", "user_id"=>1}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.1ms | Allocations: 2271)
+
+
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mHotdog Create (0.4ms)[0m  [1m[32mINSERT INTO "hotdogs" ("condiment", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["condiment", "poppy seed bun"], ["user_id", 1], ["created_at", "2019-12-28 21:40:57.984347"], ["updated_at", "2019-12-28 21:40:57.984347"]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 4.0ms | Allocations: 3504)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 13:41:17 -0800
+Started GET "/hotdogs" for ::1 at 2019-12-28 13:41:17 -0800
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"dill pickle spear", "user_id"=>1, "hotdog"=>{"condiment"=>"dill pickle spear", "user_id"=>1}}
+Processing by HotdogsController#index as */*
+  [1m[36mHotdog Load (0.1ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.1ms | Allocations: 3025)
+
+
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mHotdog Create (0.5ms)[0m  [1m[32mINSERT INTO "hotdogs" ("condiment", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["condiment", "dill pickle spear"], ["user_id", 1], ["created_at", "2019-12-28 21:41:17.166577"], ["updated_at", "2019-12-28 21:41:17.166577"]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+Completed 200 OK in 16ms (Views: 0.3ms | ActiveRecord: 7.1ms | Allocations: 5699)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 13:41:42 -0800
+Processing by HotdogsController#index as JSON
+  Parameters: {"hotdog"=>{}}
+  [1m[36mHotdog Load (0.2ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 14ms (Views: 14.0ms | ActiveRecord: 0.2ms | Allocations: 2313)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 13:44:29 -0800
+Processing by HotdogsController#index as */*
+  [1m[36mHotdog Load (0.2ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.2ms | Allocations: 2296)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 13:55:07 -0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by HotdogsController#index as */*
+  [1m[36mHotdog Load (0.3ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.3ms | Allocations: 2314)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 13:56:34 -0800
+Processing by HotdogsController#index as */*
+  [1m[36mHotdog Load (0.2ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms | Allocations: 2296)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 13:58:10 -0800
+Processing by HotdogsController#index as */*
+  [1m[36mHotdog Load (0.2ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.2ms | Allocations: 2296)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 14:02:53 -0800
+Processing by HotdogsController#index as */*
+  [1m[36mHotdog Load (0.2ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.2ms | Allocations: 2296)
+
+
+Started DELETE "/hotdogs/1" for ::1 at 2019-12-28 14:04:03 -0800
+Processing by HotdogsController#destroy as JSON
+  Parameters: {"id"=>"1", "hotdog"=>{}}
+  [1m[36mHotdog Load (0.1ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs" WHERE (1) LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:18:in `destroy'
+Completed 204 No Content in 1ms (ActiveRecord: 0.1ms | Allocations: 683)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 14:04:38 -0800
+Processing by HotdogsController#index as JSON
+  Parameters: {"hotdog"=>{}}
+  [1m[36mHotdog Load (0.2ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.2ms | Allocations: 2294)
+
+
+Started DELETE "/hotdogs/1" for ::1 at 2019-12-28 14:07:23 -0800
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HotdogsController#destroy as JSON
+  Parameters: {"id"=>"1", "hotdog"=>{}}
+  [1m[36mHotdog Load (0.2ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs" WHERE "hotdogs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:19:in `destroy'
+  [1m[36mHotdog Destroy (1.6ms)[0m  [1m[31mDELETE FROM "hotdogs" WHERE "hotdogs"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:20:in `destroy'
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 2.2ms | Allocations: 4579)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 14:07:40 -0800
+Processing by HotdogsController#index as HTML
+  [1m[36mHotdog Load (0.3ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.3ms | Allocations: 2222)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 14:08:25 -0800
+Processing by HotdogsController#index as */*
+  [1m[36mHotdog Load (0.3ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.3ms | Allocations: 2185)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 14:09:54 -0800
+Processing by HotdogsController#index as */*
+  [1m[36mHotdog Load (0.3ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 29ms (Views: 28.1ms | ActiveRecord: 0.3ms | Allocations: 2170)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 14:11:21 -0800
+Processing by HotdogsController#index as */*
+  [1m[36mHotdog Load (0.2ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.2ms | Allocations: 2184)
+
+
+Started DELETE "/hotdogs/5" for ::1 at 2019-12-28 14:11:23 -0800
+Processing by HotdogsController#destroy as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mHotdog Load (0.1ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs" WHERE "hotdogs"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:19:in `destroy'
+  [1m[36mHotdog Destroy (6.4ms)[0m  [1m[31mDELETE FROM "hotdogs" WHERE "hotdogs"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/hotdogs_controller.rb:20:in `destroy'
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 6.4ms | Allocations: 1007)
+
+
+Started DELETE "/hotdogs/4" for ::1 at 2019-12-28 14:11:29 -0800
+Processing by HotdogsController#destroy as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mHotdog Load (0.1ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs" WHERE "hotdogs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:19:in `destroy'
+  [1m[36mHotdog Destroy (6.6ms)[0m  [1m[31mDELETE FROM "hotdogs" WHERE "hotdogs"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/hotdogs_controller.rb:20:in `destroy'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 6.7ms | Allocations: 1007)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 14:11:40 -0800
+Processing by HotdogsController#index as */*
+  [1m[36mHotdog Load (0.3ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.3ms | Allocations: 1909)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 14:14:28 -0800
+Processing by HotdogsController#index as */*
+  [1m[36mHotdog Load (0.3ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.3ms | Allocations: 1926)
+
+
+Started DELETE "/hotdogs/6" for ::1 at 2019-12-28 14:14:33 -0800
+Processing by HotdogsController#destroy as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mHotdog Load (0.1ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs" WHERE "hotdogs"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:19:in `destroy'
+  [1m[36mHotdog Destroy (1.1ms)[0m  [1m[31mDELETE FROM "hotdogs" WHERE "hotdogs"."id" = ?[0m  [["id", 6]]
+  ↳ app/controllers/hotdogs_controller.rb:20:in `destroy'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 1.3ms | Allocations: 1007)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 14:14:44 -0800
+Processing by HotdogsController#index as */*
+  [1m[36mHotdog Load (0.2ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.2ms | Allocations: 1778)
+
+
+Started DELETE "/hotdogs/8" for ::1 at 2019-12-28 14:14:47 -0800
+Processing by HotdogsController#destroy as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mHotdog Load (0.1ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs" WHERE "hotdogs"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:19:in `destroy'
+  [1m[36mHotdog Destroy (6.6ms)[0m  [1m[31mDELETE FROM "hotdogs" WHERE "hotdogs"."id" = ?[0m  [["id", 8]]
+  ↳ app/controllers/hotdogs_controller.rb:20:in `destroy'
+Completed 200 OK in 9ms (Views: 0.1ms | ActiveRecord: 6.7ms | Allocations: 1007)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 14:19:45 -0800
+Processing by HotdogsController#index as */*
+  [1m[36mHotdog Load (0.7ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.7ms | Allocations: 1649)
+
+
+Started DELETE "/hotdogs/12" for ::1 at 2019-12-28 14:19:47 -0800
+Processing by HotdogsController#destroy as */*
+  Parameters: {"id"=>"12"}
+  [1m[36mHotdog Load (0.1ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs" WHERE "hotdogs"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:19:in `destroy'
+  [1m[36mHotdog Destroy (6.5ms)[0m  [1m[31mDELETE FROM "hotdogs" WHERE "hotdogs"."id" = ?[0m  [["id", 12]]
+  ↳ app/controllers/hotdogs_controller.rb:20:in `destroy'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 6.7ms | Allocations: 1007)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 14:19:56 -0800
+Processing by HotdogsController#index as */*
+  [1m[36mHotdog Load (0.7ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.7ms | Allocations: 1520)
+
+
+Started DELETE "/hotdogs/7" for ::1 at 2019-12-28 14:19:57 -0800
+Processing by HotdogsController#destroy as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mHotdog Load (0.2ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs" WHERE "hotdogs"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:19:in `destroy'
+  [1m[36mHotdog Destroy (6.7ms)[0m  [1m[31mDELETE FROM "hotdogs" WHERE "hotdogs"."id" = ?[0m  [["id", 7]]
+  ↳ app/controllers/hotdogs_controller.rb:20:in `destroy'
+Completed 200 OK in 9ms (Views: 0.1ms | ActiveRecord: 6.9ms | Allocations: 1007)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 14:21:13 -0800
+Processing by HotdogsController#index as */*
+  [1m[36mHotdog Load (0.2ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.2ms | Allocations: 1389)
+
+
+Started DELETE "/hotdogs/11" for ::1 at 2019-12-28 14:21:15 -0800
+Processing by HotdogsController#destroy as */*
+  Parameters: {"id"=>"11"}
+  [1m[36mHotdog Load (0.1ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs" WHERE "hotdogs"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:19:in `destroy'
+  [1m[36mHotdog Destroy (6.7ms)[0m  [1m[31mDELETE FROM "hotdogs" WHERE "hotdogs"."id" = ?[0m  [["id", 11]]
+  ↳ app/controllers/hotdogs_controller.rb:20:in `destroy'
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 6.8ms | Allocations: 1007)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 14:22:05 -0800
+Processing by HotdogsController#index as */*
+  [1m[36mHotdog Load (0.2ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.2ms | Allocations: 1260)
+
+
+Started DELETE "/hotdogs/10" for ::1 at 2019-12-28 14:22:06 -0800
+Processing by HotdogsController#destroy as */*
+  Parameters: {"id"=>"10"}
+  [1m[36mHotdog Load (0.2ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs" WHERE "hotdogs"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:19:in `destroy'
+  [1m[36mHotdog Destroy (6.7ms)[0m  [1m[31mDELETE FROM "hotdogs" WHERE "hotdogs"."id" = ?[0m  [["id", 10]]
+  ↳ app/controllers/hotdogs_controller.rb:20:in `destroy'
+Completed 200 OK in 9ms (Views: 0.1ms | ActiveRecord: 6.9ms | Allocations: 1007)
+
+
+Started DELETE "/hotdogs/9" for ::1 at 2019-12-28 14:22:07 -0800
+Processing by HotdogsController#destroy as */*
+  Parameters: {"id"=>"9"}
+  [1m[36mHotdog Load (0.1ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs" WHERE "hotdogs"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:19:in `destroy'
+  [1m[36mHotdog Destroy (6.6ms)[0m  [1m[31mDELETE FROM "hotdogs" WHERE "hotdogs"."id" = ?[0m  [["id", 9]]
+  ↳ app/controllers/hotdogs_controller.rb:20:in `destroy'
+Completed 200 OK in 9ms (Views: 0.1ms | ActiveRecord: 6.8ms | Allocations: 1007)
+
+
+Started DELETE "/hotdogs/3" for ::1 at 2019-12-28 14:22:08 -0800
+Processing by HotdogsController#destroy as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mHotdog Load (0.1ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs" WHERE "hotdogs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:19:in `destroy'
+  [1m[36mHotdog Destroy (6.6ms)[0m  [1m[31mDELETE FROM "hotdogs" WHERE "hotdogs"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/hotdogs_controller.rb:20:in `destroy'
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 6.7ms | Allocations: 1007)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 14:29:53 -0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"cream cheese,hot sauce,poppy seed bun,relish", "user_id"=>1, "hotdog"=>{"condiment"=>"cream cheese,hot sauce,poppy seed bun,relish", "user_id"=>1}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mHotdog Create (0.4ms)[0m  [1m[32mINSERT INTO "hotdogs" ("condiment", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["condiment", "cream cheese,hot sauce,poppy seed bun,relish"], ["user_id", 1], ["created_at", "2019-12-28 22:29:53.401832"], ["updated_at", "2019-12-28 22:29:53.401832"]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+Completed 200 OK in 29ms (Views: 0.3ms | ActiveRecord: 1.8ms | Allocations: 10130)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 14:30:03 -0800
+Processing by HotdogsController#index as */*
+  [1m[36mHotdog Load (0.3ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.3ms | Allocations: 1019)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 14:46:30 -0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by HotdogsController#index as */*
+  [1m[36mHotdog Load (0.2ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms | Allocations: 1021)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 14:46:37 -0800
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"onions,jalapenos,hot sauce,sauteed onions", "user_id"=>1, "hotdog"=>{"condiment"=>"onions,jalapenos,hot sauce,sauteed onions", "user_id"=>1}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mHotdog Create (0.3ms)[0m  [1m[32mINSERT INTO "hotdogs" ("condiment", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["condiment", "onions,jalapenos,hot sauce,sauteed onions"], ["user_id", 1], ["created_at", "2019-12-28 22:46:37.892846"], ["updated_at", "2019-12-28 22:46:37.892846"]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[35m (6.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 7.2ms | Allocations: 3329)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 14:46:43 -0800
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"relish,dill pickle spear,poppy seed bun", "user_id"=>1, "hotdog"=>{"condiment"=>"relish,dill pickle spear,poppy seed bun", "user_id"=>1}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mHotdog Create (0.3ms)[0m  [1m[32mINSERT INTO "hotdogs" ("condiment", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["condiment", "relish,dill pickle spear,poppy seed bun"], ["user_id", 1], ["created_at", "2019-12-28 22:46:43.423331"], ["updated_at", "2019-12-28 22:46:43.423331"]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+Completed 200 OK in 11ms (Views: 0.3ms | ActiveRecord: 6.6ms | Allocations: 3316)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 14:47:08 -0800
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"mustard,ketchup", "user_id"=>1, "hotdog"=>{"condiment"=>"mustard,ketchup", "user_id"=>1}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mHotdog Create (0.3ms)[0m  [1m[32mINSERT INTO "hotdogs" ("condiment", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["condiment", "mustard,ketchup"], ["user_id", 1], ["created_at", "2019-12-28 22:47:08.114626"], ["updated_at", "2019-12-28 22:47:08.114626"]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 6.7ms | Allocations: 3312)
+
+
+Started GET "/hotdogs" for ::1 at 2019-12-28 14:55:03 -0800
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by HotdogsController#index as */*
+  [1m[36mHotdog Load (0.2ms)[0m  [1m[34mSELECT "hotdogs".* FROM "hotdogs"[0m
+  ↳ app/controllers/hotdogs_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.2ms | Allocations: 1413)
+
+
+Started POST "/hotdogs" for ::1 at 2019-12-28 14:55:12 -0800
+Processing by HotdogsController#create as JSON
+  Parameters: {"condiment"=>"poppy seed bun,sauteed onions,dill pickle spear,tomato slices,pickled peppers,all-beef hot dog", "user_id"=>1, "hotdog"=>{"condiment"=>"poppy seed bun,sauteed onions,dill pickle spear,tomato slices,pickled peppers,all-beef hot dog", "user_id"=>1}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[36mHotdog Create (0.3ms)[0m  [1m[32mINSERT INTO "hotdogs" ("condiment", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["condiment", "poppy seed bun,sauteed onions,dill pickle spear,tomato slices,pickled peppers,all-beef hot dog"], ["user_id", 1], ["created_at", "2019-12-28 22:55:12.533085"], ["updated_at", "2019-12-28 22:55:12.533085"]]
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+  [1m[35m (6.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/hotdogs_controller.rb:8:in `create'
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 6.8ms | Allocations: 3329)
+
+
