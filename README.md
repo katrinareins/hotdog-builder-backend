@@ -1,24 +1,44 @@
-# README
+# Flatiron Hotdog Builder #
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to Flatiron Hotdog Builder, a web application which enables people to create hotdogs! This app will allow you to accomplish the following things:
 
-Things you may want to cover:
+* As a user, you can:
+    sign in with your current name or create a new user account
+    delete your user account 
+    view all, create and delete hotdogs
 
-* Ruby version
+## Getting Started ## ≈
 
-* System dependencies
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-* Configuration
+## Prerequisites ## 
 
-* Database creation
+What things you need to install the software 
 
-* Database initialization
+Ruby language
+Ruby gem packaging system 
+SQLite3 or other SQL database engine 
 
-* How to run the test suite
+## Installing ## 
 
-* Services (job queues, cache servers, search engines, etc.)
+* Fork and clone the current repository
 
-* Deployment instructions
+* From there, run bundle install in order to have access to all the gems in this project:
 
-* ...
+```
+bundle install
+```
+
+* From here, start up the rails server by entering "rails s" in your terminal:
+
+```
+rails s
+```
+* Fork and the front-end repository here: https://github.com/learn-co-kat/hotdog-builder-frontend
+* Open the project frontend; open the index.html file in your browser
+
+## Built with ## 
+
+* The frontend was built in HTML, CSS and JavaScript. The backend was built on Ruby on Rails (ruby-2.6.1) with a SQLite3 database. 
+
+* At the moment there is no test suite for this project.
